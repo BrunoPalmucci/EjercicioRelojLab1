@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="DiagramaRelojes">
+  <ClassDiagramComponents>
+    <Class name="Reloj" package="" visibility="public" xPosition="251.0" yPosition="32.0">
+      <Fields>
+        <Field name="hora" type="LocalTime" visibility="private"/>
+        <Field name="numSerie" type="long" visibility="private"/>
+        <Field name="modelo" type="String" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="Reloj" returnType="String" visibility="public">
+          <Argument type="LocalTime" name="hora"/>
+          <Argument type="long" name="numSerie"/>
+          <Argument type="String" name="modelo"/>
+        </Method>
+        <Method name="getHora" returnType="Localtime" visibility="public"/>
+        <Method name="setHora" returnType="LocalTime" visibility="public">
+          <Argument type="LocalTime" name="hora"/>
+        </Method>
+        <Method name="incrementarHora" returnType="char" visibility="public">
+          <Argument type="long" name="horas"/>
+          <Argument type="char" name="opcion"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="RelojPared" package="" visibility="public" xPosition="251.0" yPosition="452.0">
+      <Fields>
+        <Field name="untitledField" type="Object" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="RelojPared" returnType="void" visibility="public">
+          <Argument type="LocalTime" name="hora"/>
+          <Argument type="long" name="numSerie"/>
+          <Argument type="String" name="modelo"/>
+        </Method>
+        <Method name="incrementarHora" returnType="void" visibility="public">
+          <Argument type="long" name="cantidad_tiempo"/>
+          <Argument type="char" name="opcion"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="RelojPulseraElectrico" package="" visibility="public" xPosition="821.0" yPosition="657.0">
+      <Fields>
+        <Field name="dia" type="LocalDate" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="RelojPulseraElectrico" returnType="void" visibility="public">
+          <Argument type="LocalTime" name="hora"/>
+          <Argument type="long" name="numSerie"/>
+          <Argument type="String" name="modelo"/>
+          <Argument type="LocalDate" name="dia"/>
+        </Method>
+        <Method name="getDia" returnType="LocalDate" visibility="public"/>
+        <Method name="setDia" returnType="void" visibility="public">
+          <Argument type="LocalDate" name="dia"/>
+        </Method>
+        <Method name="incrementarDia" returnType="void" visibility="public"/>
+        <Method name="incrementarHora" returnType="void" visibility="public">
+          <Argument type="long" name="cantidad_tiempo"/>
+          <Argument type="char" name="opcion"/>
+        </Method>
+        <Method name="cambiarFecha" returnType="void" visibility="public">
+          <Argument type="long" name="cantidad_tiempo"/>
+          <Argument type="char" name="opcion"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="RelojFit" package="" visibility="public" xPosition="251.0" yPosition="714.0">
+      <Fields>
+        <Field name="distancia" type="int" visibility="private"/>
+        <Field name="frecuenciaCardiaca" type="int" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="RelojFit" returnType="void" visibility="public">
+          <Argument type="LocalTime" name="hora"/>
+          <Argument type="long" name="numSerie"/>
+          <Argument type="String" name="modelo"/>
+          <Argument type="LocalDate" name="dia"/>
+        </Method>
+        <Method name="cuentaPasos" returnType="void" visibility="public">
+          <Argument type="int" name="pasos"/>
+        </Method>
+        <Method name="frecuenciaAleatoria" returnType="int" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Persona" package="" visibility="public" xPosition="657.0" yPosition="32.0">
+      <Fields>
+        <Field name="nombre" type="String" visibility="private"/>
+        <Field name="apellido" type="String" visibility="private"/>
+        <Field name="edad" type="int" visibility="private"/>
+        <Field name="altura" type="double" visibility="private"/>
+        <Field name="relojPulsera" type="RelojPulseraElectrico" visibility="private"/>
+        <Field name="relojFit" type="RelojFit" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="Persona" returnType="void" visibility="public">
+          <Argument type="String" name="nombre"/>
+          <Argument type="String" name="apellido"/>
+          <Argument type="int" name="edad"/>
+          <Argument type="double" name="altura"/>
+          <Argument type="RelojPulseraElectrico" name="relojPulsera"/>
+          <Argument type="RelojFit" name="relojFit"/>
+        </Method>
+        <Method name="usarRelojPulsera" returnType="void" visibility="public"/>
+        <Method name="verHoraRelojPared" returnType="void" visibility="public">
+          <Argument type="RelojPared" name="reloj"/>
+        </Method>
+        <Method name="getRelojPulsera" returnType="RelojPulseraElectrico" visibility="public"/>
+        <Method name="setRelojPulsera" returnType="void" visibility="public">
+          <Argument type="RelojPulseraElectrico" name="relojPulsera"/>
+        </Method>
+        <Method name="getRelojFit" returnType="RelojFit" visibility="public"/>
+        <Method name="setRelojFit" returnType="void" visibility="public">
+          <Argument type="RelojFit" name="relojFit"/>
+        </Method>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <HasRelation name="tiene" source="Persona" target="RelojPulseraElectrico" type="Default" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <HasRelation name="tiene" source="Persona" target="RelojFit" type="Default" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="RelojPulseraElectrico" target="Reloj"/>
+    <IsRelation name="is" source="RelojPared" target="Reloj"/>
+    <UseRelation name="ve" source="Persona" target="RelojPared" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="RelojFit" target="RelojPulseraElectrico"/>
+  </ClassDiagramRelations>
+</ClassDiagram>
